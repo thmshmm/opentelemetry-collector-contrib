@@ -158,6 +158,7 @@
 - `elasticsearchreceiver`: Add metric metadata (#6892)
 - `elasticsearchreceiver`: Use same metrics as JMX receiver for JVM metrics (#7160)
 - `elasticsearchreceiver`: Implement scraping logic (#7174)
+- `elasticsearchexporter`: Add metrics exporter (#)
 - `datadogexporter`: Add http.status_code tag to trace stats (#6889)
 - `datadogexporter`: Add configuration option to use OTel span name into the Datatog resource name (#6611)
 - `mongodbreceiver`: Add initial client code to the component (#7125)
