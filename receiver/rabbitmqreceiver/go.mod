@@ -3,11 +3,11 @@ module github.com/open-telemetry/opentelemetry-collector-contrib/receiver/rabbit
 go 1.17
 
 require (
-	github.com/open-telemetry/opentelemetry-collector-contrib/internal/scrapertest v0.45.1
+	github.com/open-telemetry/opentelemetry-collector-contrib/internal/scrapertest v0.46.0
 	github.com/stretchr/testify v1.7.0
-	go.opentelemetry.io/collector v0.45.1-0.20220222205432-ec4f7040191d
-	go.opentelemetry.io/collector/model v0.45.1-0.20220222185228-27f7607ca13a
-	go.uber.org/multierr v1.7.0
+	go.opentelemetry.io/collector v0.46.0
+	go.opentelemetry.io/collector/model v0.46.0
+	go.uber.org/multierr v1.8.0
 	go.uber.org/zap v1.21.0
 )
 

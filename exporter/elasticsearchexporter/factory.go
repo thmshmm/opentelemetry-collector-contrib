@@ -31,7 +31,7 @@ const (
 
 // NewFactory creates a factory for Elastic exporter.
 func NewFactory() component.ExporterFactory {
-	return exporterhelper.NewFactory(
+	return component.NewExporterFactory(
 		typeStr,
 		createDefaultConfig,
 		exporterhelper.WithLogs(createLogsExporter),
