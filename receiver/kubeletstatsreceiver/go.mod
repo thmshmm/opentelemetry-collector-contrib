@@ -10,7 +10,7 @@ require (
 	go.opentelemetry.io/collector/model v0.46.0
 	go.uber.org/zap v1.21.0
 	k8s.io/api v0.23.4
-	k8s.io/apimachinery v0.23.4
+	k8s.io/apimachinery v0.23.5
 	k8s.io/client-go v0.23.4
 	k8s.io/kubelet v0.23.3
 )
