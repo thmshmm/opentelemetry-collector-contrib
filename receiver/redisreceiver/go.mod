@@ -5,9 +5,9 @@ go 1.17
 require (
 	github.com/go-redis/redis/v7 v7.4.1
 	github.com/open-telemetry/opentelemetry-collector-contrib/internal/containertest v0.46.0
-	github.com/stretchr/testify v1.7.0
+	github.com/stretchr/testify v1.7.1
 	go.opentelemetry.io/collector v0.46.0
-	go.opentelemetry.io/collector/model v0.46.0
+	go.opentelemetry.io/collector/model v0.48.0
 	go.uber.org/zap v1.21.0
 )
 
@@ -45,8 +45,8 @@ require (
 	go.uber.org/multierr v1.8.0 // indirect
 	golang.org/x/sys v0.0.0-20220114195835-da31bd327af9 // indirect
 	google.golang.org/genproto v0.0.0-20211208223120-3a66f561d7aa // indirect
-	google.golang.org/grpc v1.44.0 // indirect
-	google.golang.org/protobuf v1.27.1 // indirect
+	google.golang.org/grpc v1.45.0 // indirect
+	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )
