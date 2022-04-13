@@ -2,6 +2,156 @@
 
 ## Unreleased
 
+### 💡 Enhancements 💡
+- `riakreceiver`: Added implementation of Riak Metric Receiver (#8548)
+- `splunkhecexporter`: Add support for batching traces (#8995)
+- `hostmetricsreceiver`: Migrate Processes scraper to the Metrics builder (#8855)
+- `tanzuobservabilityexporter`: Use resourcetotelemetry helper (#8338)
+- Add `make crosslink` target to ensure replace statements are included in `go.mod` for all transitive dependencies within repository (#8822)
+- `filestorageextension`: Change bbolt DB settings for better performance (#9004)
+- `jaegerremotesamplingextension`: Add local and remote sampling stores (#8818)
+- `attributesprocessor`: Add support to filter on log body (#8996)
+- `prometheusremotewriteexporter`: Translate resource attributes to the target info metric (#8493)
+- `podmanreceiver`: Add API timeout configuration option (#9014)
+- `cmd/mdatagen`: Add `sem_conv_version` field to metadata.yaml that is used to set metrics SchemaURL (#9010)
+- `splunkheceporter`: Add an option to disable log or profiling data (#9065)
+- `windowsperfcountersreceiver`: Move code into separate package for use in other windowsperfcounter receivers (#9108) 
+- `datadogexporter`: Add `host_metadata` configuration section to configure host metadata export (#9100)
+- `cmd/mdatagen`: Update documentation generated for attributes to list enumerated values and show the "value" that will be visible on metrics when it is different from the attribute key in metadata.yaml (#8983)
+
+- `routingprocessor`: add option to drop resource attribute used for routing (#8990)
+
+### 🛑 Breaking changes 🛑
+
+- `filelogreceiver`, `journaldreceiver`, `syslogreceiver`, `tcplogreceiver`, `udplogreceiver`:
+  - Updated data model to align with stable logs data model, which includes various breaking changes. (#9139, #8835)
+    - A detailed [Upgrade Guide](https://github.com/open-telemetry/opentelemetry-log-collection/releases/tag/v0.28.0) is available in the log-collection v0.29.0 release notes. 
+- `datadogexporter`: Remove `OnlyMetadata` method from `Config` struct (#8980)
+- `datadogexporter`: Remove `GetCensoredKey` method from `APIConfig` struct (#8980)
+- `mongodbatlasreceiver`: Updated to uses newer metric builder which changed some metric and resource attributes (#9093)
+- `dynatraceexporter`: Make `serialization` package `/internal` (#9097)
+- `attributesprocessor`: Remove log names from filters (#9131)
+
+### 🧰 Bug fixes 🧰
+
+- `filestorageextension`: use correct bbolt options for compaction (#9134)
+- `hostmetricsreceiver`: Use cpu times for time delta in cpu.utilization calculation (#8857)
+- `dynatraceexporter`: Remove overly verbose stacktrace from certain logs (#8989)
+- `googlecloudexporter`: fix the `exporter.googlecloud.OTLPDirect` fature-gate, which was not applied when the flag was provided (#9116)
+- `signalfxexporter`: Fix bug to enable timeouts for correlating traces and metrics (#9101)
+- `windowsperfcountersreceiver`: fix exported values being integers instead of doubles (#9138)
+
+### 🚩 Deprecations 🚩
+
+- `datadogexporter`: Deprecate `service` setting in favor of `service.name` semantic convention (#8784)
+- `datadogexporter`: Deprecate `version` setting in favor of `service.version` semantic convention (#8784)
+- `datadogexporter`: Deprecate `env` setting in favor of `deployment.environment` semantic convention (#9017)
+- `datadogexporter`: Deprecate `GetHostTags` method from `TagsConfig` struct (#8975)
+- `datadogexporter`: Deprecate `tags` setting in favor of `host_metadata::tags` (#9100)
+- `datadogexporter`: Deprecate `send_metadata` setting in favor of `host_metadata::enabled` (#9100)
+- `datadogexporter`: Deprecate `use_resource_metadata` setting in favor of `host_metadata::hostname_source` (#9100)
+- `prometheusexecreceiver`: Deprecate prom_exec receiver (#9058)
+- `fluentbitextension`: Deprecate Fluentbit extension (#9062)
+
+
+### 🚀 New components 🚀
+
+### 🧰 Bug fixes 🧰
+
+- `prometheusreceiver`: Fix issues with relabelling the `job` and `instance` labels. (#8780)
+
+## v0.48.0
+
+### 💡 Enhancements 💡
+
+- `k8seventsreceiver`: Add Api_version and resource_version (#8539)
+- `datadogexporter`: Add `metrics::sums::cumulative_monotonic_mode` to specify export mode for cumulative monotonic sums (#8490)
+- `dynatraceexporter`: add multi-instance deployment note to README.md (#8848)
+- `resourcedetectionprocessor`: Add attribute allowlist (#8547)
+- `datadogexporter`:  Metrics payload data and Sketches payload data will be logged if collector is started in debug mode (#8929)
+- `cmd/mdatagen`: Add resource attributes definition to metadata.yaml and move `pdata.Metrics` creation to the
+  generated code (#8555)
+
+### 🛑 Breaking changes 🛑
+
+- `windowsperfcountersreceiver`: Added metrics configuration (#8376)
+- `lokiexporter`: Remove deprecated LogRecord.name field (#8951)
+- `splunkhecexporter`: Remove deprecated LogRecord.name field (#8951)
+
+### 🚩 Deprecations 🚩
+
+- `datadogexporter`: Deprecate `OnlyMetadata` method from `Config` struct (#8359)
+- `datadogexporter`: Deprecate `GetCensoredKey` method from `APIConfig` struct (#8830)
+- `datadogexporter`: Deprecate `metrics::send_monotonic_counter` in favor of `metrics::sums::cumulative_monotonic_mode` (#8490)
+
+### 🚀 New components 🚀
+
+- `sigv4authextension`: Enable component (#8518)
+
+## v0.47.0
+
+### 💡 Enhancements 💡
+
+- `googlecloudexporter`: Add Validate method in config (#8559)
+- `attributesprocessor`: Add convert action (#7930)
+- `attributesprocessor`: Add metric support (#8111)
+- `prometheusremotewriteexporter`: Write-Ahead Log support enabled (#7304)
+- `hostreceiver/filesystemscraper`: Add filesystem utilization (#8027)
+- `hostreceiver/pagingscraper`: Add paging.utilization (#6221)
+- `googlecloudexporter`: [Alpha] Translate metrics directly from OTLP to gcm using the `exporter.googlecloud.OTLPDirect` feature-gate (#7177)
+- `simpleprometheusreceiver`: Add support for static labels (#7908)
+- `spanmetricsprocessor`: Dropping the condition to replace _ with key_ as __ label is reserved and _ is not (#8057)
+- `podmanreceiver`: Add container.runtime attribute to container metrics (#8262)
+- `dockerstatsreceiver`: Add container.runtime attribute to container metrics (#8261)
+- `tanzuobservabilityexporter`: instrumentation Library and Dropped Counts to Span Tags (#8120)
+- `clickhouseexporter`: Implement consume log logic. (#9705)
+- `influxdbexporter`: Add support for cumulative, non-monotonic metrics. (#8348)
+- `oauth2clientauthextension`: Add support for EndpointParams (#7307)
+- Add `NewMetricData` function to `MetricsBuilder` to consistently set instrumentation library name (#8255)
+- `googlecloudpubsubreceiver` Added implementation of Google Cloud Pubsub receiver. (#8391)
+- `googlecloudpubsubexporter` Added implementation of Google Cloud Pubsub exporter. (#8391)
+- `coralogixexporter` Allow exporter timeout to be configured (#7957)
+- `prometheusremotewriteexporter` support adding trace id and span id attached to exemplars (#8380)
+- `influxdbexporter`: accept histogram metric missing infinity bucket. (#8462)
+- `skywalkingreceiver`: Added implementation of Skywalking receiver. (#8549)
+- `prometheusreceiver`: Fix staleness bug for histograms and summaries (#8561)
+
+### 🛑 Breaking changes 🛑
+
+- `mongodbatlasreceiver`: rename mislabeled attribute `memory_state` to correct `disk_status` on partition disk metrics (#7747)
+- `mongodbatlasreceiver`: Correctly set initial lookback for querying mongodb atlas api (#8246)
+- `nginxreceiver`: instrumentation name updated from `otelcol/nginx` to `otelcol/nginxreceiver` (#8255)
+- `postgresqlreceiver`: instrumentation name updated from `otelcol/postgresql` to `otelcol/postgresqlreceiver` (#8255)
+- `redisreceiver`: instrumentation name updated from `otelcol/redis` to `otelcol/redisreceiver` (#8255)
+- `apachereceiver`: instrumentation name updated from `otelcol/apache` to `otelcol/apachereceiver` ()
+- `couchdbreceiver`: instrumentation name updated from `otelcol/couchdb` to `otelcol/couchdbreceiver` (#8366)
+- `prometheusreceiver` Change resource attributes on metrics: `instance` -> `service.instance.id`, `host.name` -> `net.host.name`,  `port` -> `net.host.port`, `scheme` -> `http.scheme`, `job` removed (#8266)
+- `prometheusremotewriteexporter` Use `service.*` resource attributes instead of `job` and `instance` resource attributes when adding job and instance labels to metrics (#8266)
+- `mysqlreceiver`: instrumentation name updated from `otel/mysql` to `otelcol/mysqlreceiver` (#8387)
+- `zookeeperreceiver`: instrumentation name updated from `otelcol/zookeeper` to `otelcol/zookeeperreceiver` (#8389)
+- `coralogixexporter`: Create dynamic subsystem name (#7957)
+  - Deprecate configuration changed. Dynamic subsystem name from traces service name property.
+- `rabbitmqreceiver`: instrumentation name updated from `otelcol/rabbitmq` to `otelcol/rabbitmqreceiver` (#8400)
+
+### 🧰 Bug fixes 🧰
+
+- `zipkinexporter`: Set "error" tag value when status is set to error (#8187)
+- `prometheusremotewriteexporter`: Correctly handle metric labels which collide after sanitization (#8378)
+- `prometheusremotewriteexporter`: Drop labels when exemplar attributes exceed the max number of characters (#8379)
+- `k8sclusterreceiver`: Add support to enable k8s node and container cpu metrics to be reported as double values (#8245)
+  - Use "--feature-gates=receiver.k8sclusterreceiver.reportCpuMetricsAsDouble" to enable reporting node and container
+    cpu metrics as a double values.
+- `tanzuobservabilityexporter`: Fix a typo in Instrumentation Library name and version tags (#8384)
+- `logreceivers`: Fix an issue where receiver would sometimes fail to build using Go 1.18 (#8521)
+- `awsxrayreceiver`: Add defaults for optional stack frame parameters (#8790)
+
+### 🚩 Deprecations 🚩
+
+- `datadogexporter`: Deprecate automatic environment variable detection (#8397)
+
+### 🚀 New components 🚀
+- `sigv4authextension`: New Component: Sigv4 Authenticator Extension (#8263)
+
 ## v0.46.0
 
 ### 💡 Enhancements 💡
@@ -15,10 +165,13 @@
 - `signalfxexporter`: Add validation for `sending_queue` setting (#8026)
 - `internal/stanza`: Add support for arbitrary attribute types (#8081)
 - `resourcedetectionprocessor`: Add confighttp.HTTPClientSettings To Resource Detection Config Fixes (#7397)
+- `hostmetricsreceiver`: Add cpu.utilization metrics to cpu scrapper (#7130)
 - `honeycombexporter`: Add validation for `sending_queue` setting (#8113)
 - `routingprocessor`: Expand error handling on failure to build exporters (#8125)
 - `skywalkingreceiver`: Add new skywalking receiver component folder and structure (#8107)
 - `groupbyattrsprocesor`: Allow empty keys, which allows to use the processor for compaction (#7793)
+- `datadogexporter`: Add rbac to example k8s manifest file (#8186)
+- `splunkhecexporter`: Add validation for `sending_queue` setting (#8256)
 
 ### 🛑 Breaking changes 🛑
 
@@ -118,6 +271,7 @@
 
 ### 💡 Enhancements 💡
 
+- `kafkaexporter`: Add compression and flush max messages options.
 - `dynatraceexporter`: Write error logs using plugin logger (#7360)
 - `dynatraceexporter`: Fix docs for TLS settings (#7568)
 - `tanzuobservabilityexporter`: Turn on metrics exporter (#7281)
@@ -147,6 +301,8 @@
 ### 🛑 Breaking changes 🛑
 
 - `resourcedetectionprocessor`: Update `os.type` attribute values according to semantic conventions (#7544)
+- `awsprometheusremotewriteexporter`: Deprecation notice; may be removed after v0.49.0
+  - Switch to using the `prometheusremotewriteexporter` + `sigv4authextension` instead
 
 ### 🧰 Bug fixes 🧰
 
@@ -251,7 +407,6 @@
 - `awsemfexporter`: refactor cw_client logic into separate `cwlogs` package (#7072)
 - `prometheusexporter`: Dropping the condition to replace _ with key_ as __ label is reserved and _ is not (#7506)
 
-
 ### 🛑 Breaking changes 🛑
 
 - `memcachedreceiver`: Update metric names (#6594)
@@ -267,6 +422,7 @@
 - `mongodbreceiver`: Establish codebase for MongoDB metrics receiver (#6972)
 - `couchbasereceiver`: Establish codebase for Couchbase metrics receiver (#7046)
 - `dbstorage`: New experimental dbstorage extension (#7061)
+- `redactionprocessor`: Remove sensitive data from traces (#6495)
 
 ### 🧰 Bug fixes 🧰
 

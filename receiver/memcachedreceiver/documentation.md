@@ -22,12 +22,12 @@ These are the metrics available for this scraper.
 
 **Highlighted metrics** are emitted by default.
 
-## Attributes
+## Metric attributes
 
-| Name | Description |
-| ---- | ----------- |
-| command | The type of command. |
-| direction | Direction of data flow. |
-| operation | The type of operation. |
-| state | The type of CPU usage. |
-| type | Result of cache request. |
+| Name | Description | Values |
+| ---- | ----------- | ------ |
+| command | The type of command. | get, set, flush, touch |
+| direction | Direction of data flow. | sent, received |
+| operation | The type of operation. | increment, decrement, get |
+| state | The type of CPU usage. | system, user |
+| type | Result of cache request. | hit, miss |
