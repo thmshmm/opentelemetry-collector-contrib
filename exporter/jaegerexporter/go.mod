@@ -3,7 +3,7 @@ module github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaeger
 go 1.17
 
 require (
-	github.com/jaegertracing/jaeger v1.32.0
+	github.com/jaegertracing/jaeger v1.33.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/internal/coreinternal v0.48.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/pkg/translator/jaeger v0.48.0
 	github.com/stretchr/testify v1.7.1
@@ -41,7 +41,7 @@ require (
 	go.opentelemetry.io/otel/trace v1.6.3 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.8.0 // indirect
-	golang.org/x/net v0.0.0-20220127200216-cd36cc0744dd // indirect
+	golang.org/x/net v0.0.0-20220225172249-27dd8689420f // indirect
 	golang.org/x/sys v0.0.0-20220114195835-da31bd327af9 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/genproto v0.0.0-20211208223120-3a66f561d7aa // indirect
