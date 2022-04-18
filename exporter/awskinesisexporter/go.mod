@@ -15,7 +15,7 @@ require (
 require (
 	github.com/gogo/protobuf v1.3.2
 	github.com/google/uuid v1.3.0
-	github.com/jaegertracing/jaeger v1.32.0
+	github.com/jaegertracing/jaeger v1.33.0
 	go.uber.org/multierr v1.8.0
 )
 
@@ -42,7 +42,7 @@ require (
 	go.opentelemetry.io/otel/metric v0.29.0 // indirect
 	go.opentelemetry.io/otel/trace v1.6.3 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
-	golang.org/x/net v0.0.0-20220127200216-cd36cc0744dd // indirect
+	golang.org/x/net v0.0.0-20220225172249-27dd8689420f // indirect
 	golang.org/x/sys v0.0.0-20220114195835-da31bd327af9 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/genproto v0.0.0-20211208223120-3a66f561d7aa // indirect
