@@ -1,4 +1,4 @@
-FROM postgres:9.6.24
+FROM postgres:12.10
 
 ENV POSTGRES_USER=root
 ENV POSTGRES_PASSWORD=otel
