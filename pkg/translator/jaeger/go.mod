@@ -3,10 +3,10 @@ module github.com/open-telemetry/opentelemetry-collector-contrib/pkg/translator/
 go 1.17
 
 require (
-	github.com/jaegertracing/jaeger v1.32.0
+	github.com/jaegertracing/jaeger v1.34.1
 	github.com/open-telemetry/opentelemetry-collector-contrib/internal/coreinternal v0.48.0
 	github.com/stretchr/testify v1.7.1
-	go.opentelemetry.io/collector/model v0.48.0
+	go.opentelemetry.io/collector/model v0.49.0
 )
 
 require (
@@ -18,6 +18,7 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect
 	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect
+	go.opentelemetry.io/collector/pdata v0.49.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.8.0 // indirect
 	go.uber.org/zap v1.21.0 // indirect
