@@ -4,9 +4,9 @@ go 1.17
 
 require (
 	github.com/open-telemetry/opentelemetry-collector-contrib/internal/coreinternal v0.48.0
-	github.com/prometheus/common v0.33.0
+	github.com/prometheus/common v0.42.0
 	github.com/prometheus/prometheus v1.8.2-0.20220117154355-4855a0c067e2
-	github.com/stretchr/testify v1.7.1
+	github.com/stretchr/testify v1.8.0
 	go.opentelemetry.io/collector v0.48.0
 	go.opentelemetry.io/collector/model v0.48.0
 	go.uber.org/multierr v1.8.0
@@ -18,7 +18,7 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/rogpeppe/go-internal v1.6.1 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
-	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
 replace github.com/open-telemetry/opentelemetry-collector-contrib/internal/coreinternal => ../../../internal/coreinternal
