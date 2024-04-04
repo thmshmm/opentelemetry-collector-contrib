@@ -13,12 +13,12 @@ import (
 func TestNewAvroLogsUnmarshaler(t *testing.T) {
 	schema, data := createAVROTestData(t)
 
-	deserializer, err := newAVROStaticSchemaDeserializer(schema)
+	serDe, err := newAVROStaticSchemaSerDe(schema)
 	if err != nil {
 		t.Errorf("Did not expect an error, got %q", err.Error())
 	}
 
-	logMap, err := deserializer.Deserialize(data)
+	logMap, err := serDe.Deserialize(data)
 	if err != nil {
 		t.Fatalf("Did not expect an error, got %q", err.Error())
 	}
@@ -37,6 +37,6 @@ func TestNewAvroLogsUnmarshaler(t *testing.T) {
 }
 
 func TestNewAvroLogsUnmarshalerInvalidSchema(t *testing.T) {
-	_, err := newAVROStaticSchemaDeserializer("invalid schema")
+	_, err := newAVROStaticSchemaSerDe("invalid schema")
 	assert.Error(t, err)
 }

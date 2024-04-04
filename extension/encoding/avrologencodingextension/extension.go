@@ -16,20 +16,26 @@ import (
 )
 
 var (
+	_ encoding.LogsMarshalerExtension   = (*avroLogExtension)(nil)
 	_ encoding.LogsUnmarshalerExtension = (*avroLogExtension)(nil)
 )
 
 type avroLogExtension struct {
-	deserializer avroDeserializer
+	deserializer avroSerDe
 }
 
 func newExtension(config *Config) (*avroLogExtension, error) {
-	deserializer, err := newAVROStaticSchemaDeserializer(config.Schema)
+	deserializer, err := newAVROStaticSchemaSerDe(config.Schema)
 	if err != nil {
 		return nil, err
 	}
 
 	return &avroLogExtension{deserializer: deserializer}, nil
+}
+
+func (e *avroLogExtension) MarshalLogs(ld plog.Logs) ([]byte, error) {
+	body := ld.ResourceLogs().At(0).ScopeLogs().At(0).LogRecords().At(0).Body().AsString()
+	return e.deserializer.Serialize([]byte(body))
 }
 
 func (e *avroLogExtension) UnmarshalLogs(buf []byte) (plog.Logs, error) {

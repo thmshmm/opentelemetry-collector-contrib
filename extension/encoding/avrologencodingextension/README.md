@@ -30,3 +30,5 @@ extensions:
         ]
       }
 ```
+
+The `avrolog` encoding extension is used to unmarshal AVRO and insert it into the body of a log record. Marshalling is done by reading a JSON string from the body.
