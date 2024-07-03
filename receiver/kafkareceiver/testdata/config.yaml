@@ -17,7 +17,7 @@ kafka:
       backoff: 5s
 kafka/logs:
   topic: logs
-  encoding: direct
+  format: direct
   brokers:
     - "coffee:123"
     - "foobar:456"
